@@ -1,0 +1,275 @@
+:revealjsdir: https://cdn.rawgit.com/hakimel/reveal.js/3.8.0/
+:revnumber: {project-version}
+:example-caption!:
+ifndef::imagesdir[:imagesdir: images]
+:docinfo: shared
+:navigation:
+:menu:
+:header_footer: true
+:status:
+:slideNumber: true
+:showSlideNumber: true
+:title-slide-transition: zoom
+:title-slide-transition-speed: fast
+:icons: font
+:revealjs_history: true
+:source-highlighter: highlightjs
+
+++++
+<script src="theme/reveal-animate.js">
+
+</script>
+++++
+
+[.black.background]
+== !
+
+[.notes]
+--
+Aurelien
+--
+
+[#1]
+== !
+
+++++
+<script type="text/animations">
+const img = RevealAnimate.get("#toto-image");
+
+
+img.hide().waitFor(2000).show().waitForNext().hide().run()
+</script>
+++++
+
+[#toto-image]
+image::bazel.png[]
+
+[.notes]
+--
+Aurelien
+--
+
+include::chapters/00-speakers.adoc[]
+
+include::chapters/01-chezgoogle.adoc[]
+
+include::chapters/02-function-pure.adoc[]
+
+include::chapters/03-angular.adoc[]
+
+== !
+
+NOTE: Il faut voir Bazel comme un orchestrateur, et non comme un nouvel outil de build à apprendre
+
+[.notes]
+--
+--
+
+== 🇫🇷 Multi Langage
+
+[.column]
+* Android
+* C / C++
+* C#
+* Docker
+* Go
+* Groovy
+
+[.column]
+* Kotlin
+* iOS
+* Java
+* Javascript
+* Perl
+* Python
+
+[.column]
+* Ruby
+* Rust
+* Sass
+* Shell
+* Typescript
+* ...
+
+[.notes]
+--
+Parler d'extensibilite. Indiquer que certains des languages sont supportés par défaut. 
+--
+
+== Getting Started
+
+++++
+<iframe src="https://giphy.com/embed/1BFGiiHYS2dAbC0Lx1" width="480" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+++++
+
+[.notes]
+--
+TODO: 
+- Parler de la granularité a utiliser. comme mave ? ou une granulatie plus petite. on gagne en performance, mais on perd en maintenabilite
+--
+
+include::chapters/starlark.adoc[]
+
+== Workspace / Package
+
+[.hidden-title]
+=== !
+
+image::monoreposgoogle.png[structure,600,600]
+
+=== !
+
+[source,python]
+----
+// WORKSPACE
+http_archive(
+    name = "build_bazel_rules_nodejs",
+    sha256 = "1249a60f88e4c0a46d78de06be04d3d41e7421dcfa0c956de65309a7b7ecf6f4",
+    urls = ["https://github.com/bazelbuild/rules_nodejs/releases/download/0.38.0/rules_nodejs-0.38.0.tar.gz"],
+)
+----
+
+== Rule / Target
+
+=== Utiliser une rule
+
+[source,python]
+----
+// BUILD.bazel
+ts_library(
+    srcs =  [ "..." ],
+    deps = [ "..." ],
+)
+----
+
+=== Créer une target
+
+[source,python]
+----
+// BUILD.bazel
+rollup_bundle(
+    name = "bundle",
+    srcs = [ "..." ],
+    deps = [ "..." ],
+)
+----
+
+== Les labels
+
+Un label correspond à 
+
+* un fichier 
+* une target
+
+=== Les labels
+
+* //gcp/finance:front	
+* //gcp/finance
+* //gcp/finance:all
+* //gcp/...
+
+[.notes]
+--
+--
+
+=== Les labels
+
+Si je suis dans le répertoire `gcp`
+
+* :all == //gcp:all
+* finance:front == //gcp/finance:front
+
+[.notes]
+--
+--
+
+== Créer une target
+
+[source,python]
+---- 
+// //library/BUILD.bazel
+ts_library(
+    name = "library",
+    srcs = glob(["*.ts"]),
+    deps = [ "@npm//@types/react" ],
+)
+----
+
+== Dépendances
+
+[source,python]
+----
+// //library/BUILD.bazel
+ts_library(
+    name = "library",
+    srcs = glob(["*.ts"]),
+    deps = [ "@npm//@types/react" ],
+)
+
+// //BUILD.bazel
+ts_library(
+    name = "app",
+    srcs = glob(["*.ts"]),
+    deps = [ "//library", "@npm//@types/react" ],
+)
+----
+
+== Macro
+
+[source,python]
+----
+// //:rules.bzl
+def compile(name, **kwargs):
+    ts_library(
+        name = name,
+        srcs = glob(["*.ts"]),
+        **kwargs
+    )
+----
+
+=== Macro
+
+[source,python]
+----
+load("//:rules.bzl", "compile")
+
+compile(
+    name = "library",
+    deps = [ "@npm//@types/react" ]
+)
+----
+
+== Custom rules
+
+[source,python]
+----
+def ts_binary_impl(ctx):
+  files = list(get_transitive_files(ctx))
+  output = ctx.outputs.out
+  flags = ' '.join(ctx.attr.flags)
+  ctx.action(
+      inputs=files,
+      outputs=[output],
+      command="tsc %s --out %s %s" % (
+          flags, output.path, ' '.join([f.path for f in files])))
+
+ts_binary = rule(
+  implementation = ts_binary_impl,
+  attrs = {
+      "srcs": attr.label_list(allow_files=ts_filetype),
+      "deps": attr.label_list(allow_files=False),
+      "flags": attr.string_list(),
+  },
+  outputs = {"out": "%{name}.js"},
+)]
+----
+
+== Custom rules
+
+include::chapters/starlark-file.adoc[]
+
+include::chapters/demo.adoc[]
+
+include::chapters/conclusion.adoc[]
+
+include::chapters/thanks.adoc[]

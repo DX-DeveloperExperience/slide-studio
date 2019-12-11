@@ -1,0 +1,23 @@
+== !
+
+++++
+<iframe src="https://giphy.com/embed/uhb1F8ebDgkzC" width="960" height="540" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+++++
+
+[.notes]
+--
+TODO:
+Manu
+- /Users/emmanueldemey/Documents/workspaces/oss/rules_nodejs/packages/labs/src/protobufjs/ts_proto_library.bzls
+- Parler que nous pouvons définir des variabls privées
+- Parler de l'outillage
+    - Parler du beautifuer
+    - Parler des extensions VSCode
+revenir sur le code angulkar pour expliquer les fichiers build genere
+https://dev.to/jakeherringbone/layering-in-bazel-for-web-389h
+presentation de ibazel
+
+Demo angular d'aurelien
+
+Demo rule node Manu
+--

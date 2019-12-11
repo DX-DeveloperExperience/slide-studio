@@ -1,0 +1,72 @@
+== Fonctions pures
+
+[source,javascript]
+----
+function sum( a:number, b: number): number {
+    return a + b;
+}
+const result = sum(1 + 2);
+----
+
+[.notes]
+--
+Aurelien
+--
+
+=== Fonctions pures
+
+[source,javascript]
+----
+function sum( a:number, b: number): number {
+    return a + b;
+}
+
+function mult( a:number, factor: number): number {
+    return a * factor;
+}
+
+const result = mult( sum(1, 2), 3);
+----
+
+[.notes]
+--
+Aurelien
+--
+
+=== !
+
+// image::deps-pure/deps.svg[]
+image::deps-pure/00.png[deps,600]
+
+=== !
+
+image::deps-pure/01.png[deps,600]
+
+=== !
+
+image::deps-pure/02.png[deps,600]
+
+=== !
+
+image::deps-pure/03.png[deps,600]
+
+=== !
+
+image::deps-pure/04.png[deps,600]
+
+=== !
+
+image::deps-pure/deps-angular.png[angular, 600]
+
+[source,shell]
+--
+bazel query "deps(//packages/core:core)" --output=graph | dot -Tpng > graph.png
+--
+
+[.notes]
+--
+Aurelien
+- DEMO Presenter le graph du projet angular
+bazel query "deps(//packages/http)" --output graph | dot -Tpng > /tmp/dep.png
+open /tmp/dep.png 
+--

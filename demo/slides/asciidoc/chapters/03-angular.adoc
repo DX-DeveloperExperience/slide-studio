@@ -1,0 +1,88 @@
+== !
+
+image::angular-pr.png[]
+
+[.notes]
+--
+Aurel
+--
+
+=== !
+
+image::angular-connect.png[]
+
+[.notes]
+--
+--
+
+=== !
+
+image::react/sad.gif[sad,700]
+
+[.notes]
+--
+--
+
+// === !
+
+// image::angular.png[]
+
+// [.notes]
+// --
+// --
+
+// === Differential loading
+
+// image::angular-build.png[]
+
+=== !
+
+image::angular/angular-and-bazel.png[]
+
+[source,shell]
+----
+npm run ng add @angular/bazel
+----
+
+[.notes]
+--
+Il faut dire que c'est a ce moment la que nous avons voulu regarder Bazel et comprendre comment cela fonctionner. 
+--
+
+=== !
+
+++++
+<iframe src="https://giphy.com/embed/UrEQirmnMPxBwToULv" width="960" height="540" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+++++
+
+[.notes]
+--
+* Parler que nous aurions pu faire juste une demo d'angular avec bazel, mais cela n'aurait pas permis de comprendre la syntaxe. 
+Mais faire tout de meme une demo d'angular cli avec le support Bazel pour montrer le support et le fait que cela ne change rien pour l'utilisateur
+
+---
+npx @angular/cli new . ...
+npm run build
+git add . git commit
+ng add @angular/bazel
+git diff
+---
+
+* executer deux fois pour voir le temps d'execution
+--
+
+=== !
+
+image::react/react-pr-bazel.png[prreact,700]
+
+[.notes]
+--
+--
+
+=== !
+
+image::angular/ng-build-bazel.png[]
+
+=== !
+
+image::angular/ng-build-bazel-style.png[]

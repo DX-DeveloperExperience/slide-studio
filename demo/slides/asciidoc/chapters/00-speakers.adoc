@@ -1,0 +1,27 @@
+[.speaker]
+== !
+
+[id="speaker-bio"]
+--
+Emmanuel DEMEY
+
+Developer Advocate à Zenika Lille 
+
+@EmmanuelDemey
+--
+
+image::emmanuel.jpg[]
+
+[.speaker]
+== !
+
+[id="speaker-bio"]
+--
+Aurélien LOYER
+
+Consultant à Zenika Lille 
+
+@AurelienLoyer
+--
+
+image::aurelien.jpeg[]

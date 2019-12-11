@@ -1,0 +1,30 @@
+[.hidden-title]
+== Conclusion
+
+image::release.png[release,600,600]
+
+[.notes]
+--
+Manu
+TODO: 
+- Ajouter un diff GIT pour montrer les fichiers ajoutés
+- Support dans Angular CLI 
+- Builder en remote avec plus core 
+Ce n'est pas pour tout le monde
+Pour un startup ou un nouveau projet, ne pas choisir bazel
+Choisir une solution historique. si le projet grossit, eventuellement .
+
+Ecosysteme plus large
+Syntaxe a simplifier 
+Documentation
+Creer de l'outillage pour faciliter la migraton. Un plugin existe deja pour migrer maven, et gazelle pour le monde nodejs
+Regarder le projet angular. extraire le fichier BUILD
+--
+
+== Pour aller plus loin 
+
+- https://bazel.build/[Bazel website]
+- https://www.youtube.com/watch?v=2UOFm-Cc_cU[Migration Maven / Gradle vers Bazel]
+- https://www.youtube.com/watch?v=3VhyGhTWP9I[A la découverte de Bazel]
+- https://www.youtube.com/watch?v=DTvXa-iqrfA[Streamlining Kubernetes Application CI/CD with Bazel]
+- https://www.youtube.com/watch?v=yBg9zG6ZGb4[Building Large Angular Apps With Bazel]

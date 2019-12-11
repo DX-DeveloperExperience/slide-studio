@@ -1,0 +1,75 @@
+== !
+
+image::google_codebase.png[]
+
+[.notes]
+--
+Aurelien
+* Gros monorepo chez Google
+* Google à mis en place de nombreux outils pour faciliter et rendre possible l'utilisation d'un mono repo pour les developpeurs
+--
+
+=== 🛠 chez Google
+
+[.column]
+* Piper
+* CiTC
+* Critique
+* Codesearch
+
+[.column]
+* Tricorder
+* Presubmit
+* TAP
+* Rosie
+
+[.notes]
+--
+Aurelien
+Nous avons par exemple ces outils qui on en charge de faciliter l'utilisation du mono repo chez Google
+--
+
+=== !
+
+[.inline]
+--
+image::bazel-old-logo.png[]
+image::bazel-logo.png[]
+--
+
+NOTE: 2015 - Blaze -> Bazel
+
+[.notes]
+--
+* Créé par Google, au début pour un usage interne. 
+* Blaze, depuis plusieurs année sur leur monorepo contenant presque la totalité des projets dévéloppés par Google voir même les dépendances et les outils utiliseé. 
+--
+
+[.companies]
+=== !
+
+image::google.png[]
+image::elastic.png[]
+image::wix.png[]
+image::etsy.png[]
+image::dropbox.png[]
+image::stripe.png[]
+
+[.notes]
+--
+Aurelien
+* google - . blaze
+elastic a fait un poc pour leur offre cloud
+wix a fait une migration de maven vers bazel
+--
+
+=== !
+
+NOTE: Build and test software of any size, quickly and reliably.
+
+[.notes]
+--
+* petit et gros projet
+* rapidement: cache
+* fiable: detection de changement et le principe des functions pures
+--

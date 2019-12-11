@@ -1,0 +1,20 @@
+{
+	"name": "bazel-bazel-bazel",
+	"version": "1.0.0",
+	"description": "",
+	"directories": {
+		"doc": "docs"
+	},
+	"scripts": {
+		"start": "npm run generate:slides",
+		"generate:slides": "speaker-cli generate --slides",
+		"watch:slides": "speaker-cli generate --slides --watch",
+		"deploy": "speaker-cli deploy"
+	},
+	"author": "@AurelienLoyer @EmmanuelDemey",
+	"license": "MIT",
+	"devDependencies": {
+		"speaker-cli": "git+https://github.com/DX-DeveloperExperience/speaker-cli.git"
+	},
+	"dependencies": {}
+}
